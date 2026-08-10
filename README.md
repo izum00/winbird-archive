@@ -1,26 +1,25 @@
 # WinBirdアーカイブ
 WinBirdのファイルのアーカイブです。脆弱性の多い過去のファイルを見ることができます。
 
-
-# 現時点で公開可能な脆弱性
-
-- Client: options.htmlのパスワードがハードコードされている
-
+# 現時点で公開可能な脆弱性・バグ
 
 ## Client: options.htmlのパスワードがハードコードされている
 - 対象： 3-2まで
 - ファイル： options.js 32行目
 - 再現方法： `chrome-extension://aenkapbklopnjfadjnjghcbnnloadlpl/options.html` を開く
+
 「WinBird$JS6」というパスワードが、以下のように、直接ハードコードされている。
+
 ```javascript
 if(updateKey.startsWith('6SJ$driBniW'.split('').reverse().join(''))){const tempKeyWords=updateKey.split(/\s+/,5);for(let i=1;i<tempKeyWords.length;i++){tempKeyWords[i]=tempKeyWords[i].toLowerCase();}
 ```
+
 上記の処理の内容は、「6SJ$driBniW」を逆順にして、「WinBird$JS6」にしている
 
-- 使用できたパスワード：
-・WinBird$JS6：情報・ログを表示
+- ### 使用できたパスワード：
+・`WinBird$JS6`：情報・ログを表示
 
-### ・WinBird$JS6 + 半角スペース + 以下のもの
+・`WinBird$JS6 + 半角スペース + 以下のもの`
 
 　`on`：クライアントの無効化フラグ（ProhibitClient）を解除し、拡張機能をリロード
  
@@ -48,7 +47,7 @@ if(updateKey.startsWith('6SJ$driBniW'.split('').reverse().join(''))){const tempK
 
 (これらはハッシュ化・修正しない仕様だと判断して公開しています)
 
-「WinBird$JS6」は付けず、そのまま使用できます。
+`WinBird$JS6`は付けず、そのまま使用できます。
 
 　`yakanseigen`：夜間制限情報を表示
 
@@ -73,7 +72,7 @@ if(updateKey.startsWith('6SJ$driBniW'.split('').reverse().join(''))){const tempK
 
 2026年 4/16 前後に修正済み
 
-一部のパスワードをハッシュ化。HashCatでは復元できない程度の強さである。また、WinBird$JS6ではない。
+一部のパスワードをハッシュ化。HashCatでは復元できない程度の強さである。また、 `WinBird$JS6` ではない。
 
 ```javascript
 const tempKeyWords=updateKey.split(/\s+/,10);let keyHash=['','',''];Utils.getHashAsync(tempKeyWords.join(' ')).then((hash)=>{keyHash[0]=hash;for(let i=1;i<tempKeyWords.length;i++)tempKeyWords[i]=tempKeyWords[i].toLowerCase();return Utils.getHashAsync(tempKeyWords.join(' '));}).then((hash)=>{keyHash[1]=hash;return Utils.getHashAsync(tempKeyWords.slice(0,tempKeyWords.length-1).join(' '));}).then((hash)=>{keyHash[2]=hash;if(keyHash[1]==='5c3f01edca632acb5fc03084f8803a258d3faa99f4297c8c5448e744720026bb'){getStorageInfoLogAsync().then((logs)=>{fnAppendLogContainer(logs);}).finally(()=>{isCanSaveLog=true;refreshUpdateKeyTextAsync(true).then(()=>{});});return;}
