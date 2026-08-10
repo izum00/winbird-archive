@@ -43,7 +43,7 @@ if(updateKey.startsWith('6SJ$driBniW'.split('').reverse().join(''))){const tempK
  
 　`logsep` または `logseparator`：ログに区切り線（'='×48）を出力
 
-### ・現在でも使用できるもの
+### ・現在でも使用できるもの：
 
 (これらはハッシュ化・修正しない仕様だと判断して公開しています)
 
