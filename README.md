@@ -17,11 +17,12 @@ if(updateKey.startsWith('6SJ$driBniW'.split('').reverse().join(''))){const tempK
 上記の処理の内容は、「6SJ$driBniW」を逆順にして、「WinBird$JS6」にしている
 
 - ### 使用できたパスワード：
+
 ・`WinBird$JS6`：情報・ログを表示
 
 ・`WinBird$JS6 + 半角スペース + 以下のもの`
 
-　`on`：クライアントの無効化フラグ（ProhibitClient）を解除し、拡張機能をリロード
+　`on`：クライアントの無効化フラグを解除し、拡張機能をリロード
  
 　`forceoff`：ProhibitClient を有効化し、クライアントを無効にしてリロード
  
@@ -33,9 +34,9 @@ if(updateKey.startsWith('6SJ$driBniW'.split('').reverse().join(''))){const tempK
  
 　`devmode on / off`：開発者モードをオン/オフ（日付付きでローカルストレージに保存）しリロード
  
-　`show self on / off`：自身の拡張機能ページ（chrome://extensions/）の表示許可をトグル（セッションストレージ）
+　`show self on / off`：自身の拡張機能ページ（chrome://extensions/）の表示許可を切り替え
  
-　`debug core on / off`：デバッグコアモードをトグル（クライアントコアに通知）
+　`debug core on / off`：デバッグコアモードを切り替え
  
 　`debug trace 0 / 1 / 2`：デバッグトレースレベルを設定（0=UNSET,1=INFO,2=DEBUG）
  
